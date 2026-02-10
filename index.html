@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CustomWear - Custom Hoodies & T-Shirts</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">CustomWear</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#products">Shop</a></li>
+                <li id="account-nav">
+                    <a href="pages/account.html">Account</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" id="cart-icon" class="cart-icon">
+                        🛒 Cart <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Create Your Perfect Look</h1>
+            <p>Custom printed hoodies and t-shirts for men and women</p>
+            <a href="#products" class="btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filters" id="filters">
+        <div class="filters-container">
+            <h2>Filter Products</h2>
+            <div class="filter-group">
+                <label for="gender-filter">Gender:</label>
+                <select id="gender-filter">
+                    <option value="">All</option>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="type-filter">Type:</label>
+                <select id="type-filter">
+                    <option value="">All</option>
+                    <option value="hoodie">Hoodie</option>
+                    <option value="tshirt">T-Shirt</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="color-filter">Color:</label>
+                <select id="color-filter">
+                    <option value="">All</option>
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="gray">Gray</option>
+                    <option value="navy">Navy Blue</option>
+                    <option value="red">Red</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="size-filter">Size:</label>
+                <select id="size-filter">
+                    <option value="">All</option>
+                    <option value="S">Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
+                    <option value="XXL">2XL</option>
+                </select>
+            </div>
+            <button id="reset-filters" class="btn-secondary">Reset Filters</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="products-container">
+            <h2>Our Products</h2>
+            <div id="products-grid" class="products-grid">
+                <!-- Products will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CustomWear. All rights reserved.</p>
+        <p>Custom printed hoodies and t-shirts with passion</p>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Shopping Cart</h2>
+            <div id="cart-items-container">
+                <!-- Cart items will be displayed here -->
+            </div>
+            <div id="cart-empty" class="cart-empty">
+                <p>Your cart is empty</p>
+            </div>
+            <div id="cart-summary">
+                <h3>Total: $<span id="cart-total">0.00</span></h3>
+                <button id="checkout-btn" class="btn-primary">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="product-detail">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

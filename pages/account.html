@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - CustomWear</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo"><a href="../index.html" style="color: #ff6b6b; text-decoration: none;">CustomWear</a></div>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../index.html#products">Shop</a></li>
+                <li id="account-nav">
+                    <a href="account.html">Account</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" id="cart-icon" class="cart-icon">
+                        🛒 Cart <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="logged-in-view" style="display: none;">
+        <!-- Account Container -->
+        <div class="account-container">
+            <div class="account-header">
+                <h1>My Account</h1>
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </div>
+
+            <div class="account-tabs">
+                <button class="tab-button active" onclick="switchTab('profile')">Profile</button>
+                <button class="tab-button" onclick="switchTab('orders')">My Orders</button>
+                <button class="tab-button" onclick="switchTab('settings')">Settings</button>
+            </div>
+
+            <!-- Profile Tab -->
+            <div id="profile" class="tab-content active">
+                <div class="form-group">
+                    <label>Full Name:</label>
+                    <p id="profile-name" style="color: #ff6b6b; font-weight: bold; padding: 0.8rem; background-color: #2a2a2a; border-radius: 5px;"></p>
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <p id="profile-email" style="color: #ff6b6b; font-weight: bold; padding: 0.8rem; background-color: #2a2a2a; border-radius: 5px;"></p>
+                </div>
+                <div class="form-group">
+                    <label>Account Created:</label>
+                    <p id="profile-created" style="color: #ccc; padding: 0.8rem; background-color: #2a2a2a; border-radius: 5px;"></p>
+                </div>
+                <div class="form-group">
+                    <label>Total Orders:</label>
+                    <p id="profile-orders" style="color: #4ade80; font-weight: bold; padding: 0.8rem; background-color: #2a2a2a; border-radius: 5px;"></p>
+                </div>
+            </div>
+
+            <!-- Orders Tab -->
+            <div id="orders" class="tab-content">
+                <div id="orders-list">
+                    <!-- Orders will be loaded here -->
+                </div>
+                <div id="no-orders" style="text-align: center; padding: 2rem; color: #999;">
+                    <p>You haven't placed any orders yet.</p>
+                    <a href="../index.html" class="btn-primary">Continue Shopping</a>
+                </div>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings" class="tab-content">
+                <h2 style="color: #ff6b6b; margin-bottom: 1.5rem;">Account Settings</h2>
+                <div class="form-group">
+                    <label for="new-password">Change Password:</label>
+                    <input type="password" id="new-password" placeholder="Enter new password">
+                </div>
+                <button class="btn-secondary" onclick="updatePassword()">Update Password</button>
+                
+                <hr style="border: none; border-top: 1px solid #555; margin: 2rem 0;">
+                
+                <h3 style="color: #ff6b6b; margin-bottom: 1rem;">Notification Preferences</h3>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" checked> Email me about new products
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" checked> Email me about order updates
+                    </label>
+                </div>
+                <button class="btn-secondary">Save Preferences</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login/Register View -->
+    <div id="login-register-view">
+        <div class="auth-container">
+            <h2>Welcome to CustomWear</h2>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab-button active" onclick="switchAuthTab('login')">Login</button>
+                <button class="auth-tab-button" onclick="switchAuthTab('register')">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="auth-form active">
+                <div id="login-message" style="display: none;"></div>
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" placeholder="Enter your password">
+                </div>
+                <button class="form-submit" onclick="handleLogin()">Login</button>
+                <div class="auth-link">
+                    Don't have an account? <a href="javascript:void(0)" onclick="switchAuthTab('register')">Register here</a>
+                </div>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="auth-form">
+                <div id="register-message" style="display: none;"></div>
+                <div class="form-group">
+                    <label for="register-name">Full Name:</label>
+                    <input type="text" id="register-name" placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email:</label>
+                    <input type="email" id="register-email" placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Password:</label>
+                    <input type="password" id="register-password" placeholder="Enter a strong password">
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirm Password:</label>
+                    <input type="password" id="register-confirm" placeholder="Confirm password">
+                </div>
+                <button class="form-submit" onclick="handleRegister()">Register</button>
+                <div class="auth-link">
+                    Already have an account? <a href="javascript:void(0)" onclick="switchAuthTab('login')">Login here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CustomWear. All rights reserved.</p>
+        <p>Custom printed hoodies and t-shirts with passion</p>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Shopping Cart</h2>
+            <div id="cart-items-container">
+                <!-- Cart items will be displayed here -->
+            </div>
+            <div id="cart-empty" class="cart-empty">
+                <p>Your cart is empty</p>
+            </div>
+            <div id="cart-summary">
+                <h3>Total: $<span id="cart-total">0.00</span></h3>
+                <button id="checkout-btn" class="btn-primary">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/products.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/account.js"></script>
+</body>
+</html>
